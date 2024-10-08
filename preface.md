@@ -1,6 +1,13 @@
 # Preface
 
-## Design Pattern Principals
+## Practices
+### 1. **State Private**
+### 2. **Code Standards**
+### 3. **Program by intent**
+
+---
+
+## Principals
 
 These principles are not strict rules but guidelines that help in designing robust and flexible systems. Many of the **Gang of Four** design patterns, such as Factory, Singleton, and Observer, adhere to these principles to some extent.
 
@@ -63,3 +70,9 @@ Design pattern principles guide the creation and application of design patterns 
 ---
 
 These principles form the foundation for many **design patterns** (such as Factory, Singleton, Decorator, etc.) and enable developers to create systems that are more **flexible, reusable,** and **maintainable** over time. Following these guidelines helps avoid common pitfalls like tight coupling, rigid design, and code duplication.
+
+---
+
+## Patterns
+### 1. **Singleton**:
+---
