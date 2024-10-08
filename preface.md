@@ -14,8 +14,9 @@ These principles are not strict rules but guidelines that help in designing robu
 Design pattern principles guide the creation and application of design patterns in software development. These principles focus on achieving flexibility, maintainability, and scalability in software systems. Here are the **key principles** of design patterns:
 
 ### 1. **Don't Repeat Yourself (DRY)**:
-> **Avoid duplication** of code and logic. Every piece of knowledge or functionality should have a single, unambiguous, and authoritative representation in a system. This reduces redundancy, improves maintainability, and avoids inconsistencies.
-> 
+- **Principle**:  Avoid duplication of code and logic. 
+- **Explanation**: Every piece of knowledge or functionality should have a single, unambiguous, and authoritative representation in a system. This reduces redundancy, improves maintainability, and avoids inconsistencies.
+
 ### 2. **Encapsulate What Varies**
 - **Principle**: Identify the aspects of your system that change and separate them from what stays the same.
 - **Explanation**: Design your system in a way that allows parts that are subject to change (like algorithms, data structures, or behaviors) to be modified independently without affecting other parts of the system.
