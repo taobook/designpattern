@@ -70,7 +70,28 @@
         '/en-us/': 'Search',
       },
       pathNamespaces: ['/zh-tw', '/en-us']
-    }
+    },
+    plugins: [
+      function pageFooter(hook, vm) {
+
+        hook.afterEach(function (html) {
+          var url =
+                      'https://github.com/taobook/designpattern/blob/main' +
+                      vm.route.path
+                      +".md";
+
+          // Invoked one time when docsify script is initialized
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            '<span>2024 &copy; taobook. </span>',
+            '<a target="_blank" href="'+url+'">[Edit]</a>',
+            '</footer>',
+          ].join('');
+          return html + footer;
+        });
+      },
+    ],
   };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
