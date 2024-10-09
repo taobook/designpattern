@@ -32,7 +32,7 @@ public class Singleton {
 	
 	private Singleton(){
 	}
-	
+	//no synchronized - incorrect
 	public static Singleton getInstance() {
 		if(instance==null) {
 			instance = new Singleton();
@@ -69,6 +69,7 @@ public class Singleton {
 	
 	public static Singleton getInstance() {
 		if(instance==null) {
+			//multiple threads are waiting here, and will create an instance each -- incorrect
 			synchronized(Singleton.class) {//incorrect
 				instance = new Singleton();
 			}
@@ -88,10 +89,10 @@ public class Singleton {
 	}
 	
 	public static Singleton getInstance() {
-		if(instance==null) {
+		if(instance==null) {//could still be broken in managed code?
 			//multiple threads are waiting here
 			synchronized(Singleton.class) {
-				if(instance==null) {//double checked
+				if(instance==null) {//double checked //could still be broken in managed code?
 					instance = new Singleton();
 				}
 			}
