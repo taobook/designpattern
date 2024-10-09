@@ -1,37 +1,133 @@
-传统方法，是将对象的创建由各自的调用者负责。工厂模式的主要思想是，将创建的功能封装在一个地方集中处理
+# Singleton
 
+The singleton scope is the default scope in Spring. singleton (Default) Scopes a single bean definition to a single object instance per Spring IoC container.
 
-\section{简单工厂}
-将对象的创建集中到一个地方， 这样，如果需要修改，只需要修改一个地方。
+### 1. 饿汉声明（推荐，功能正确，不节省空间，性能好）
 
-class PizzaFactory {
-public static Pizza createPizza(){
-return null;
+```java
+public class Singleton {
+	//why no multiple instances?
+	//becuase initialized during class loading stage
+	//class loading is thread-safe
+	//when will class is loaded?
+	private static final Singleton instance = new Singleton();
+	
+	private Singleton(){
+	}
+
+	public static Singleton getInstance() {
+		return instance;
+	}
 }
+```
+
+
+### 2. 饿汉静态代码快（推荐，功能正确，不节省空间，性能好）
+same as 1
+
+### 3. 懒汉不带锁（不推荐，功能不正确，节省空间，性能好）
+```java
+public class Singleton {
+	private static Singleton instance;
+	
+	private Singleton(){
+	}
+	
+	public static Singleton getInstance() {
+		if(instance==null) {
+			instance = new Singleton();
+		}
+		return instance;
+	}
 }
-\section{工厂方法}
-没有工厂类，User只是先在自己的类中创建一个抽象的“方法”，再将对象的实例化推迟到子类的“方法”中实现
+```
 
-
-
-\section{抽象工厂}
-是简单工厂和工厂方法的结合。
-专门搞一个抽象的工厂，将对象的实例化推迟到工厂的子类中实现。
-User调用时，选择使用哪一个具体的工厂
-
-abstract class AbsPizzaFactory
-
-class BjPizzaFactory implements AbsPizzaFactory{
-public Pizza createPizza(){
-return null;
+### 4. 懒汉同步方法（不推荐，功能正确，节省空间，性能不好）
+```java
+public class Singleton {
+	private static Singleton instance;
+	
+	private Singleton(){
+	}
+	
+	public static synchronized Singleton getInstance() {
+		if(instance==null) {
+			instance = new Singleton();
+		}
+		return instance;
+	}
 }
+```
+
+### 5. 懒汉同步代码块单重检查（不推荐，功能不正确，节省空间，性能不好）
+```java
+public class Singleton {
+	private static Singleton instance;
+	
+	private Singleton(){
+	}
+	
+	public static Singleton getInstance() {
+		if(instance==null) {
+			synchronized(Singleton.class) {//incorrect
+				instance = new Singleton();
+			}
+		}
+		return instance;
+	}
 }
+```
 
 
-User
-AbsPizzaFactory factory = null;
+### 6. 懒汉同步代码块双重检查（推荐，功能正确，节省空间，性能可以）
+```java
+public class Singleton {
+	private static volatile Singleton instance;
+	
+	private Singleton(){
+	}
+	
+	public static Singleton getInstance() {
+		if(instance==null) {
+			//multiple threads are waiting here
+			synchronized(Singleton.class) {
+				if(instance==null) {//double checked
+					instance = new Singleton();
+				}
+			}
+		}
+		return instance;
+	}
+}
+```
 
 
+### 7. 静态内部类 （推荐）
+利用了静态内部类默认不加载的特性，可以起到懒加载的好处--节省空间
+利用了类加载时候的线程安全，满足了线程安全的需求
+```java
+public class Singleton {
+	private static volatile Singleton instance;
+	
+	private Singleton(){
+	}
+	
+	//is not loaded by default. only loaded when used.
+	private static class SingletonInnerClass {
+		private static final Singleton instance = new Singleton();
+	}
+	
+	public static Singleton getInstance() {
+		return SingletonInnerClass.instance;//SingletonInnerClass is loaded once
+	}
+}
+```
 
-
-123）抽象工厂模式和原型模式之间的区别？(答案)
+### 8. 枚举
+```java
+public enum Singleton {
+	INSTANCE;
+	public void sayOK(){
+	}
+}
+```
