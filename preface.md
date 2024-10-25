@@ -1,12 +1,20 @@
 # Preface
 
-## Practices
-### 1. **State Private**
-### 2. **Code Standards**
-### 3. **Program by intent**
+The nature of your design is informed by which patterns are present and how they provide contest for each other.
+
+## Qualities
+cohesion class=1 resp, methd = 1 func
+
+coupling: ID. Rep. Inh, SubC
+
+No redundance: of Anything ever
+
+Encapsulation: of everything possible
+
+Testability: leverage
+
 
 ---
-
 ## Principles
 
 These principles are not strict rules but guidelines that help in designing robust and flexible systems. Many of the **Gang of Four** design patterns, such as Factory, Singleton, and Observer, adhere to these principles to some extent.
@@ -69,29 +77,47 @@ Design pattern principles guide the creation and application of design patterns 
 These principles form the foundation for many **design patterns** (such as Factory, Singleton, Decorator, etc.) and enable developers to create systems that are more **flexible, reusable,** and **maintainable** over time. Following these guidelines helps avoid common pitfalls like tight coupling, rigid design, and code duplication.
 
 ---
+## Practices
+### 1. **State Private**
+### 2. **Code Standards**
+### 3. **Program by intent**
+
+---
+## Wisdom
+design to interfaces
+
+favor comp. over inh
+
+enc. conc's that vary
+
+coh. of perspective
+
+---
 
 ## Patterns
-### 1. **Singleton**:
-### 2. **Factory**:
-### 3. **Abstract Factory**:
-### 4. **Prototype**:
-### 5. **Builder**:
-### 6. **Bridge**:
-### 7. **Adapter**:
-### 8. **Facade**:
-### 9. **Decorator**:
-### 10. **Composite**:
-### 11. **Flyweight**:
-### 12. **Proxy**:
-### 13. **Strategy**:
-### 14. **Template**:
-### 15. **Command**:
-### 16. **Visitor**:
-### 17. **Iterator**:
-### 18. **Observer**:
-### 19. **Mediator**:
-### 20. **Memento**:
-### 21. **Interpreter**:
-### 22. **State**:
-### 23. **Chain of Responsibility**:
+1. **Singleton**:
+2. **Factory**:
+3. **Abstract Factory**:
+4. **Prototype**:
+5. **Builder**:
+6. **Bridge**:
+7. **Adapter**:
+8. **Facade**:
+9. **Decorator**:
+10. **Composite**:
+11. **Flyweight**:
+12. **Proxy**:
+13. **Strategy**:
+14. **Template**:
+15. **Command**:
+16. **Visitor**:
+17. **Iterator**:
+18. **Observer**:
+19. **Mediator**:
+20. **Memento**:
+21. **Interpreter**:
+22. **State**:
+23. **Chain of Responsibility**:
+
 ---
+##  Paradigm
