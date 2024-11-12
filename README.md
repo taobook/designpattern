@@ -7,3 +7,5 @@
 > 
 > —— Confucius' Analects
 
+# Index
+[Index](_sidebar.md ':include')
